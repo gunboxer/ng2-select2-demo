@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { BasicComponent } from './basic.component';
 
-describe('BasicComponent', () => {
+describe('NoautoselectComponent', () => {
   let component: BasicComponent;
   let fixture: ComponentFixture<BasicComponent>;
 

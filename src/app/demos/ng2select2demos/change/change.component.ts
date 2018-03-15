@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../services/data.service';
-import { Select2OptionData } from 'ng2-select2';
+import { DataService } from '../../../../services/data.service';
+import { S2Option } from 'rselect2';
 
 @Component({
   selector: 'app-change',
@@ -8,7 +8,7 @@ import { Select2OptionData } from 'ng2-select2';
   styleUrls: ['./change.component.css']
 })
 export class ChangeComponent implements OnInit {
-  public exampleData: Array<Select2OptionData>;
+  public exampleData: Array<S2Option>;
   public startValue: string;
   public selected: string;
 

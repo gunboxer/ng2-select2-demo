@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Select2OptionData } from 'ng2-select2';
+import { S2Option } from 'rselect2';
 
 @Component({
   selector: 'app-basic',
@@ -7,27 +7,27 @@ import { Select2OptionData } from 'ng2-select2';
   styleUrls: ['./basic.component.css']
 })
 export class BasicComponent implements OnInit {
-  public exampleData: Array<Select2OptionData>;
+  public exampleData: Array<S2Option>;
 
   ngOnInit() {
     this.exampleData = [
       {
         id: 'basic1',
         text: 'Basic 1'
-      },
+      } as S2Option,
       {
         id: 'basic2',
         disabled: true,
         text: 'Basic 2'
-      },
+      } as S2Option,
       {
         id: 'basic3',
         text: 'Basic 3'
-      },
+      } as S2Option,
       {
         id: 'basic4',
         text: 'Basic 4'
-      }
+      } as S2Option
     ];
   }
 }

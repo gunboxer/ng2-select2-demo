@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Select2OptionData } from 'ng2-select2';
+import { S2Option } from 'rselect2';
 
 @Component({
   selector: 'app-matcher',
@@ -8,7 +8,7 @@ import { Select2OptionData } from 'ng2-select2';
 })
 export class MatcherComponent implements OnInit {
   public options: Select2Options;
-  public exampleData: Array<Select2OptionData>;
+  public exampleData: Array<S2Option>;
 
   ngOnInit() {
     this.options = {
@@ -21,35 +21,35 @@ export class MatcherComponent implements OnInit {
       {
         id: 'AK',
         text: 'Alaska'
-      },
+      } as S2Option,
       {
         id: 'HI',
         text: 'Hawaii'
-      },
+      } as S2Option,
       {
         id: 'CA',
         text: 'California'
-      },
+      } as S2Option,
       {
         id: 'NV',
         text: 'Nevada'
-      },
+      } as S2Option,
       {
         id: 'OR',
         text: 'Oregon'
-      },
+      } as S2Option,
       {
         id: 'WA',
         text: 'Washington'
-      },
+      } as S2Option,
       {
         id: 'AZ',
         text: 'Arizona'
-      },
+      } as S2Option,
       {
         id: 'CO',
         text: 'Colorado'
-      }
+      } as S2Option
     ];
   }
 }

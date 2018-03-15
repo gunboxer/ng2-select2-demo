@@ -1,0 +1,26 @@
+body {
+  overflow: auto;
+  height: auto;
+}
+
+.hosts-container {
+  display: block;
+  width: 100%;
+  min-width: 1280px;
+}
+
+.ng2select2-host, .rselect2-host {
+  display: inline-block;
+  width: 48%;
+  height: 100%;
+  padding: 5px;
+  border: 1px solid #777;
+}
+
+.ng2select2-host {
+  float: left;
+}
+
+.rselect2-host {
+  float: right;
+}

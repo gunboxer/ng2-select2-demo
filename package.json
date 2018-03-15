@@ -23,7 +23,7 @@
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
     "jquery": "^3.1.1",
-    "ng2-select2": "^1.0.0-beta.11",
+    "rselect2": "^0.0.7",
     "rxjs": "^5.5.6",
     "select2": "^4.0.3",
     "zone.js": "^0.8.19"

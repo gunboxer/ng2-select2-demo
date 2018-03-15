@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Select2OptionData } from 'ng2-select2';
-import { DataService } from '../../../services/data.service';
+import { S2Option } from 'rselect2';
+import { DataService } from '../../../../services/data.service';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/delay';
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/delay';
   styleUrls: ['./dynamic.component.css']
 })
 export class DynamicComponent implements OnInit {
-  public exampleData: Observable<Array<Select2OptionData>>;
+  public exampleData: Observable<Array<S2Option>>;
   public startValue: Observable<string>;
 
   constructor(private service: DataService) {}

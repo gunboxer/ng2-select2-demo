@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Select2OptionData } from 'ng2-select2';
+import { S2Option } from 'rselect2';
 
 @Component({
   selector: 'app-multiple',
@@ -7,7 +7,7 @@ import { Select2OptionData } from 'ng2-select2';
   styleUrls: ['./multiple.component.css']
 })
 export class MultipleComponent implements OnInit {
-  public exampleData: Array<Select2OptionData>;
+  public exampleData: Array<S2Option>;
   public options: Select2Options;
   public value: string[];
   public current: string;
@@ -17,19 +17,19 @@ export class MultipleComponent implements OnInit {
       {
         id: 'multiple1',
         text: 'Multiple 1'
-      },
+      } as S2Option,
       {
         id: 'multiple2',
         text: 'Multiple 2'
-      },
+      } as S2Option,
       {
         id: 'multiple3',
         text: 'Multiple 3'
-      },
+      } as S2Option,
       {
         id: 'multiple4',
         text: 'Multiple 4'
-      }
+      } as S2Option
     ];
 
     this.value = ['multiple2', 'multiple4'];
