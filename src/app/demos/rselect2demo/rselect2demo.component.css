@@ -1,0 +1,31 @@
+body {
+  overflow: auto;
+  height: auto;
+}
+
+.hosts-container {
+  display: flex;
+  width: 100%;
+  min-width: 1280px;
+}
+
+.ng2select2-host, .rselect2-host {
+  display: flex;
+  width: 50%;
+  height: auto;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #777;
+}
+
+.ng2select2-host {
+  float: left;
+}
+
+.rselect2-host {
+  float: right;
+}
+
+.rselect2host-component, .ng2select2host-component {
+  width: 100%;
+}

@@ -17,6 +17,10 @@ import { MatcherComponent } from './demos/ng2select2demos/matcher/matcher.compon
 import { MultipleComponent } from './demos/ng2select2demos/multiple/multiple.component';
 import { NoAutoSelectComponent } from './demos/rselect2demos/noautoselect/noautoselect.component';
 import { RSelect2HostComponent } from './demos/rselect2demos/rselect2host/rselect2host.component';
+import {RDataService} from '../services/rdata.service';
+import {PreloadAllModules, RouterModule} from '@angular/router';
+import {ROUTES} from './app.routes';
+import {RSelect2DemoComponent} from './demos/rselect2demo/rselect2demo.component';
 
 
 
@@ -31,15 +35,19 @@ import { RSelect2HostComponent } from './demos/rselect2demos/rselect2host/rselec
     TemplateComponent,
     MatcherComponent,
     MultipleComponent,
-
+    RSelect2DemoComponent,
     RSelect2HostComponent,
     NoAutoSelectComponent
   ],
   imports: [
     BrowserModule,
-    RSelect2Module
+    RSelect2Module,
+    RouterModule.forRoot(ROUTES, {
+      useHash: Boolean(history.pushState) === false,
+      preloadingStrategy: PreloadAllModules
+    })
   ],
-  providers: [ DataService ],
+  providers: [ DataService, RDataService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

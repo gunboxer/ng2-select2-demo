@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { S2Option } from 'rselect2';
+import {Component, OnInit} from '@angular/core';
+import {RDataService} from '../../../../services/rdata.service';
+import {SimpleEntity} from '../../../../model/simple.model';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-noautoselect',
@@ -7,27 +9,33 @@ import { S2Option } from 'rselect2';
   styleUrls: ['./noautoselect.component.css']
 })
 export class NoAutoSelectComponent implements OnInit {
-  public exampleData: Array<S2Option>;
+  data: Array<SimpleEntity>;
+  entity: SimpleEntity | null;
 
-  ngOnInit() {
-    this.exampleData = [
-      {
-        id: 'basic1',
-        text: 'Basic 1'
-      } as S2Option,
-      {
-        id: 'basic2',
-        disabled: true,
-        text: 'Basic 2'
-      } as S2Option,
-      {
-        id: 'basic3',
-        text: 'Basic 3'
-      } as S2Option,
-      {
-        id: 'basic4',
-        text: 'Basic 4'
-      } as S2Option
-    ];
+  constructor(private rDataService: RDataService,
+              private router: Router,
+              private route: ActivatedRoute) {
+
   }
+
+  ngOnInit(): void {
+    this.rDataService.getSimpleEntityData().delay(1000).subscribe((result: Array<SimpleEntity>) => {
+      this.data = result;
+      let id = null;
+      this.route.queryParams.subscribe(params => {
+        id = params['noautoselect'];
+        const filterEntity = this.data.filter(entity => entity.id === id);
+        this.entity = filterEntity.length ? filterEntity[0] : null;
+      });
+    });
+  }
+
+  valueChanged(): void {
+    this.router.navigate(['/rselect2'],
+      {
+        queryParams: {noautoselect: this.entity ? this.entity.id : null},
+        preserveFragment: true
+      });
+  }
+
 }

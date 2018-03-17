@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { S2Option } from 'rselect2';
 import { Observable } from 'rxjs/Observable';
-import {ImageEntity} from './data.model';
+import {ImageEntity} from '../model/image.model';
 
 @Injectable()
 export class DataService {

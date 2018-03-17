@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Select2TemplateFunction, S2Option } from 'rselect2';
 import { DataService } from '../../../../services/data.service';
-import {ImageEntity} from '../../../../services/data.model';
+import {ImageEntity} from '../../../../model/image.model';
 
 @Component({
   selector: 'app-template',

@@ -1,3 +1,12 @@
-<h2>1. Basic demo</h2>
+<h2>1. RSelect2 simple select</h2>
+<div class="rselect2-container">
+  <rselect2
+    [data]="data"
+    [options]="{minimumResultsForSearch: -1, allowClear: true}"
+    [autoSelect]="false"
+    [(entity)]="entity"
+    (valueChanged)="valueChanged()"
+    [width]="'100%'">
 
-<rselect2 [data]="exampleData"></rselect2>
+  </rselect2>
+</div>
