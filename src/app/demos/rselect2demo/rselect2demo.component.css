@@ -15,7 +15,8 @@ body {
   height: auto;
   padding: 5px;
   margin: 5px;
-  border: 1px solid #777;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .ng2select2-host {

@@ -21,6 +21,7 @@ import {RDataService} from '../services/rdata.service';
 import {PreloadAllModules, RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
 import {RSelect2DemoComponent} from './demos/rselect2demo/rselect2demo.component';
+import {MarkdownModule} from 'ngx-md';
 
 
 
@@ -42,6 +43,7 @@ import {RSelect2DemoComponent} from './demos/rselect2demo/rselect2demo.component
   imports: [
     BrowserModule,
     RSelect2Module,
+    MarkdownModule.forRoot(),
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules

@@ -1,4 +1,6 @@
-<h2>1. RSelect2 simple select</h2>
+<div Markdown>
+  # RSelect2 simple select
+</div>
 <div class="rselect2-container">
   <rselect2
     [data]="data"
@@ -7,6 +9,12 @@
     [(entity)]="entity"
     (valueChanged)="valueChanged()"
     [width]="'100%'">
-
   </rselect2>
+</div>
+<div Markdown>
+  ## New features of RSelect2:
+  * Data binding based on **[(entity)]** which model based on implementation of S2Option interface.
+  * If url parameter **noautoselect** _not provided or empty_ then select value **empty by default**
+  * If url parameter **noautoselect** _provided_ then value automatically selected. This is useful for F5 page refresh feature support. Page refresh working for all RSelect2 examples.
+  * If user clear select value with ✕ button then dropdown **not** opens. This is known issue of select2.
 </div>
