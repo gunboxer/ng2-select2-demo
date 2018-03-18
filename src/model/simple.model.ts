@@ -12,4 +12,8 @@ export class SimpleEntity implements S2Option {
   text: string;
   title: string;
 
+  first_name: string;
+  last_name: string;
+  gender: string;
+
 }

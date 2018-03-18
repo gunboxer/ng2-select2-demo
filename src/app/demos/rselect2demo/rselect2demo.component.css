@@ -11,7 +11,8 @@ body {
 
 .ng2select2-host, .rselect2-host {
   display: flex;
-  width: 50%;
+  width: 48%;
+  max-width: 48%;
   height: auto;
   padding: 5px;
   margin: 5px;

@@ -22,8 +22,8 @@ import {PreloadAllModules, RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
 import {RSelect2DemoComponent} from './demos/rselect2demo/rselect2demo.component';
 import {MarkdownModule} from 'ngx-md';
-
-
+import {NgxJsonViewerModule} from 'ngx-json-viewer';
+import {SimpleAjaxSelectComponent} from './demos/rselect2demos/simpleajaxselect/simpleajaxselect.component';
 
 @NgModule({
   declarations: [
@@ -38,12 +38,14 @@ import {MarkdownModule} from 'ngx-md';
     MultipleComponent,
     RSelect2DemoComponent,
     RSelect2HostComponent,
-    NoAutoSelectComponent
+    NoAutoSelectComponent,
+    SimpleAjaxSelectComponent
   ],
   imports: [
     BrowserModule,
     RSelect2Module,
     MarkdownModule.forRoot(),
+    NgxJsonViewerModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
