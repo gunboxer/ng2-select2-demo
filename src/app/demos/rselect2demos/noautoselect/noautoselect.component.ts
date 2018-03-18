@@ -35,7 +35,7 @@ export class NoAutoSelectComponent implements OnInit {
     this.router.navigate(['/rselect2'],
       {
         queryParams: {noautoselect: this.entity ? this.entity.id : null},
-        preserveFragment: true
+        queryParamsHandling: 'merge'
       });
   }
 

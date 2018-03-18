@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RDataService} from '../../../../services/rdata.service';
 import {SimpleEntity} from '../../../../model/simple.model';
-import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-simpleajaxselect',
@@ -11,7 +11,7 @@ import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 export class SimpleAjaxSelectComponent implements OnInit {
   data: Array<SimpleEntity>;
   entity: SimpleEntity | null;
-  options: Select2Options = {minimumResultsForSearch: -1, allowClear: true};
+  options: Select2Options = {allowClear: true};
 
   constructor(private rDataService: RDataService,
               private router: Router,
@@ -21,34 +21,53 @@ export class SimpleAjaxSelectComponent implements OnInit {
 
   ngOnInit(): void {
 
-/*
-    const ajaxFunction = (settings: JQueryAjaxSettings, success?: (data: any) => null, failure?: () => null): JQueryXHR => {
-
-    } as AjaxFunction;
-
-    const select2AjaxOptions = {
-      transport:
-    } as Select2AjaxOptions;
-
-    this.options.ajax = select2AjaxOptions;
-*/
-
     this.rDataService.getSimpleEntityData().delay(1000).subscribe((result: Array<SimpleEntity>) => {
       this.data = result;
       let id = null;
       this.route.queryParams.subscribe(params => {
-        id = params['noautoselect'];
+        id = params['simpleajaxselect'];
         const filterEntity = this.data.filter(entity => entity.id === id);
         this.entity = filterEntity.length ? filterEntity[0] : null;
       });
     });
+
+    this.options.ajax = this.options.ajax = {
+      url: 'http://localhost:4200/whateverendpoint',
+      dataType: 'json',
+      delay: 500,
+      headers: {
+        'Authorization' : 'Bearer ' + 'whatevertoken',
+        'Content-Type' : 'application/json',
+      },
+      data: function (params) {
+
+        return {
+          limit: 20,
+          offset: ((params.page || 1) - 1) * 20,
+          sortField: 'text',
+          sortAscending: true,
+          searchField: 'text',
+          searchQuery: params.term
+        };
+      },
+      processResults: function (data, params) {
+        params.page = params.page || 1;
+
+        return {
+          results: data.items,
+          pagination: {
+            more: (params.page * 20) < data.total
+          }
+        };
+      },
+    } as Select2AjaxOptions;
   }
 
   valueChanged(): void {
     this.router.navigate(['/rselect2'],
       {
-        queryParams: {noautoselect: this.entity ? this.entity.id : null},
-        preserveFragment: true
+        queryParams: {simpleajaxselect: this.entity ? this.entity.id : null},
+        queryParamsHandling: 'merge'
       });
   }
 

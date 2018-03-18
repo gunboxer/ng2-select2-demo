@@ -121,8 +121,10 @@ export class RDataService {
     $.ajax = (params) => {
       return {
         then: function (success) {
-          const data = context.getSimpleEntityDataPage(params as QueryParams);
-          setTimeout(() => { success(data, null, null); }, 5000);
+          const data = context.getSimpleEntityDataPage(params as {data: QueryParams});
+          setTimeout(() => { success(data, '200', null); }, 2000);
+        },
+        fail: function () {
         }
       } as JQueryXHR;
     };
@@ -135,10 +137,11 @@ export class RDataService {
     });
   }
 
-  getSimpleEntityDataPage(queryParams: QueryParams): { items: SimpleEntity[], total: number } {
+  getSimpleEntityDataPage(ajaxParams: {data: QueryParams}): { items: SimpleEntity[], total: number } {
+    const queryParams = ajaxParams.data;
     let data = (queryParams.searchQuery && queryParams.searchField) ?
       RDataService.simpleData.filter(entity =>
-        entity[queryParams.searchField].toString().toLowerCase().contains(queryParams.searchQuery.toLowerCase())) :
+        entity[queryParams.searchField].toString().toLowerCase().indexOf(queryParams.searchQuery.toLowerCase()) > -1) :
       RDataService.simpleData;
 
     data = queryParams.sortField ?
@@ -157,7 +160,7 @@ export class RDataService {
 
 }
 
-class QueryParams {
+export class QueryParams {
   limit: number;
   offset: number;
   sortField: string;

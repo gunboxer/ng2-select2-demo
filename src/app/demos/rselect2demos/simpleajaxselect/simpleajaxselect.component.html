@@ -6,7 +6,6 @@
     <rselect2
       [data]="data"
       [options]="options"
-      [autoSelect]="false"
       [(entity)]="entity"
       (valueChanged)="valueChanged()"
       [width]="'100%'">
@@ -17,9 +16,9 @@
   </div>
 </div>
 <div Markdown>
-  ## New features of RSelect2:
-  * Data binding based on **[(entity)]** which model based on implementation of S2Option interface.
-  * If url parameter **noautoselect** _not provided or empty_ then select value **empty by default**
-  * If url parameter **noautoselect** _provided_ then value automatically selected. This is useful for F5 page refresh feature support. Page refresh working for all RSelect2 examples.
-  * If user clear select value with ✕ button then dropdown **not** opens. This is known issue of select2.
+  ## Ajax selection description
+  * Ajax data loading performed by providing *ajax* property to *[options]*
+  * Natively select2 performs http request for data over JQuery http client but it may be overloaded with custom *transport* (In this example $.ajax overloaded with custom see _rdata.service.ts_)
+  * To support initial selection for page refresh property *data* used
+  * Search also working
 </div>
